@@ -15,6 +15,13 @@ var board = [
 
 //========== Helper Functions ==========
 
+var checkForTie = function(board){
+  if (JSON.stringify(board).indexOf('0') === -1){
+    clearBoard();
+    alert('The game was a tie!')
+  }
+}
+
 var xWins = function(){
   clearBoard();
   alert('X has won the game!')
@@ -103,7 +110,7 @@ document.getElementsByClassName('one')[0].addEventListener('click', function () 
     xTurn = true;
     console.log('O placed!')
   }
-
+  checkForTie(board);
   checkForWinner(board);
 });
 
@@ -122,6 +129,7 @@ document.getElementsByClassName('two')[0].addEventListener('click', function () 
     xTurn = true
     console.log('O placed!')
   }
+  checkForTie(board);
   checkForWinner(board);
 });
 
@@ -140,6 +148,7 @@ document.getElementsByClassName('three')[0].addEventListener('click', function (
     xTurn = true
     console.log('O placed!')
   }
+  checkForTie(board);
   checkForWinner(board);
 });
 
@@ -158,6 +167,7 @@ document.getElementsByClassName('four')[0].addEventListener('click', function ()
     xTurn = true
     console.log('O placed!')
   }
+  checkForTie(board);
   checkForWinner(board);
 });
 
@@ -176,6 +186,7 @@ document.getElementsByClassName('five')[0].addEventListener('click', function ()
     xTurn = true
     console.log('O placed!')
   }
+  checkForTie(board);
   checkForWinner(board);
 });
 
@@ -194,6 +205,7 @@ document.getElementsByClassName('six')[0].addEventListener('click', function () 
     xTurn = true
     console.log('O placed!')
   }
+  checkForTie(board);
   checkForWinner(board);
 });
 
@@ -213,6 +225,7 @@ document.getElementsByClassName('seven')[0].addEventListener('click', function (
     xTurn = true
     console.log('O placed!')
   }
+  checkForTie(board);
   checkForWinner(board);
 });
 
@@ -232,6 +245,7 @@ document.getElementsByClassName('eight')[0].addEventListener('click', function (
     xTurn = true
     console.log('O placed!')
   }
+  checkForTie(board);
   checkForWinner(board);
 });
 
@@ -251,10 +265,11 @@ document.getElementsByClassName('nine')[0].addEventListener('click', function ()
     xTurn = true
     console.log('O placed!')
   }
+  checkForTie(board);
   checkForWinner(board);
 });
 
 // ========== Refresh Button ===========
 document.getElementsByClassName('refresh')[0].addEventListener('click', function(){
-  clearboard();
+  clearBoard();
 })
