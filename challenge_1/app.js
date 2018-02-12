@@ -11,6 +11,23 @@ var board = [
   [0,0,0]
 ];
 
+// this is gross and should be refactored
+var xWins = function(){
+  alert('X has won the game!')
+}
+var oWins = function(){
+  alert('O has won the game!')
+}
+
+var checkForWinner = function(board){
+  if (JSON.stringify(board[0]) === "[1,1,1]"){
+    xWins();
+  } else if (JSON.stringify(board[0]) === "[2,2,2]"){
+    oWins();
+  }
+}
+
+
 // this is really long and gross and can probably be fixed
 document.getElementsByClassName('one')[0].addEventListener('click', function () {
   var element = document.getElementsByClassName('one')[0];
@@ -27,6 +44,8 @@ document.getElementsByClassName('one')[0].addEventListener('click', function () 
     xTurn = true;
     console.log('O placed!')
   }
+
+  checkForWinner(board);
 });
 
 document.getElementsByClassName('two')[0].addEventListener('click', function () {
