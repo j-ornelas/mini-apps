@@ -31,6 +31,7 @@ var xWins = function(){
 var oWins = function(){
   clearBoard();
   alert('O has won the game!')
+  xTurn = false;
   //call clear funtion here
 }
 
