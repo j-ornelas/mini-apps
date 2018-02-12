@@ -1,3 +1,5 @@
+
+// ========== Browser Memory ==========
 var xTurn = true;
 // first turn will be x
 // if xturn is false, throw 'o' instead of 'x'
@@ -11,22 +13,79 @@ var board = [
   [0,0,0]
 ];
 
-// this is gross and should be refactored
+//========== Helper Functions ==========
+
 var xWins = function(){
+  clearBoard();
   alert('X has won the game!')
+
+  // call clear function here
 }
 var oWins = function(){
+  clearBoard();
   alert('O has won the game!')
+  //call clear funtion here
 }
 
+var clearBoard = function(){
+  var squares = document.getElementsByClassName('square')
+    for (var i = 0; i < squares.length; i++) {
+      squares[i].innerHTML = ""
+    };
+  xTurn = true;
+  board = [
+    [0,0,0],
+    [0,0,0],
+    [0,0,0]
+  ]
+}
+
+//========== GAME WINNING LOGIC ==========
+// we can probably turn this into an object of some kind
+//and make it way prettier.
 var checkForWinner = function(board){
+  var vert1 = JSON.stringify([board[0][0], board[1][0], board[2][0]]);
+  var vert2 = JSON.stringify([board[0][1], board[1][1], board[2][1]]);
+  var vert3 = JSON.stringify([board[0][2], board[1][2], board[2][2]]);
+  var cross1 = JSON.stringify([board[0][2], board[1][1], board[2][0]]);
+  var cross2 = JSON.stringify([board[0][0], board[1][1], board[2][2]]);
+
   if (JSON.stringify(board[0]) === "[1,1,1]"){
     xWins();
   } else if (JSON.stringify(board[0]) === "[2,2,2]"){
     oWins();
+  } else if (JSON.stringify(board[1]) === "[1,1,1]"){
+    xWins();
+  } else if (JSON.stringify(board[1]) === "[2,2,2]"){
+    oWins();
+  } else if (JSON.stringify(board[2]) === "[1,1,1]"){
+    xWins();
+  } else if (JSON.stringify(board[2]) === "[2,2,2]"){
+    oWins();
+  } else if (vert1 === "[1,1,1]"){
+    xWins();
+  } else if (vert1 === "[2,2,2]"){
+    oWins();
+  } else if (vert2 === "[1,1,1]"){
+    xWins();
+  } else if (vert2 === "[2,2,2]"){
+    oWins();
+  } else if (vert3 === "[1,1,1]"){
+    xWins();
+  } else if (vert3 === "[2,2,2]"){
+    oWins();
+  } else if (cross1 === "[1,1,1]"){
+    xWins();
+  } else if (cross1 === "[2,2,2]"){
+    oWins()
+  } else if (cross2 === "[1,1,1]"){
+    xWins();
+  } else if (cross2 === "[2,2,2]"){
+    oWins();
   }
 }
 
+//========== Event Listeners ==========
 
 // this is really long and gross and can probably be fixed
 document.getElementsByClassName('one')[0].addEventListener('click', function () {
@@ -63,6 +122,7 @@ document.getElementsByClassName('two')[0].addEventListener('click', function () 
     xTurn = true
     console.log('O placed!')
   }
+  checkForWinner(board);
 });
 
 document.getElementsByClassName('three')[0].addEventListener('click', function () {
@@ -80,6 +140,7 @@ document.getElementsByClassName('three')[0].addEventListener('click', function (
     xTurn = true
     console.log('O placed!')
   }
+  checkForWinner(board);
 });
 
 document.getElementsByClassName('four')[0].addEventListener('click', function () {
@@ -97,6 +158,7 @@ document.getElementsByClassName('four')[0].addEventListener('click', function ()
     xTurn = true
     console.log('O placed!')
   }
+  checkForWinner(board);
 });
 
 document.getElementsByClassName('five')[0].addEventListener('click', function () {
@@ -114,6 +176,7 @@ document.getElementsByClassName('five')[0].addEventListener('click', function ()
     xTurn = true
     console.log('O placed!')
   }
+  checkForWinner(board);
 });
 
 document.getElementsByClassName('six')[0].addEventListener('click', function () {
@@ -131,6 +194,7 @@ document.getElementsByClassName('six')[0].addEventListener('click', function () 
     xTurn = true
     console.log('O placed!')
   }
+  checkForWinner(board);
 });
 
 
@@ -149,6 +213,7 @@ document.getElementsByClassName('seven')[0].addEventListener('click', function (
     xTurn = true
     console.log('O placed!')
   }
+  checkForWinner(board);
 });
 
 
@@ -167,6 +232,7 @@ document.getElementsByClassName('eight')[0].addEventListener('click', function (
     xTurn = true
     console.log('O placed!')
   }
+  checkForWinner(board);
 });
 
 
@@ -185,21 +251,10 @@ document.getElementsByClassName('nine')[0].addEventListener('click', function ()
     xTurn = true
     console.log('O placed!')
   }
+  checkForWinner(board);
 });
 
-
-
-
-
+// ========== Refresh Button ===========
 document.getElementsByClassName('refresh')[0].addEventListener('click', function(){
-  var squares = document.getElementsByClassName('square')
-    for (var i = 0; i < squares.length; i++) {
-      squares[i].innerHTML = ""
-    };
-  xTurn = true;
-  board = [
-    [0,0,0],
-    [0,0,0],
-    [0,0,0]
-  ]
+  clearboard();
 })
