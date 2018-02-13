@@ -1,10 +1,24 @@
 var express = require('express');
 var app = express();
 var path = require('path');
+var bodyParser = require('body-parser');
 
+app.use(bodyParser.json());
 app.use(express.static('client'));
+app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist/'));
 
-var csv = {
+
+app.post('/', function( req, res ) {
+  console.log('request', req.body);
+  res.send(data)
+
+})
+
+
+
+
+
+var data = [{
     "firstName": "Joshie",
     "lastName": "Wyattson",
     "county": "San Mateo",
@@ -50,14 +64,6 @@ var csv = {
       "children": []
     }
   ]
-};
+}];
 
-app.get('/', function( req, res) {
-  res.sendFile(path.join(__dirname + '/client/'));
-})
-
-app.get('/csv', function( req, res ) {
-  console.log(csv)
-})
-
-app.listen(3000, () => console.log('server running on port 3000'))
+app.listen(8080, () => console.log('server running on port 8080'))
