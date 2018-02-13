@@ -3,16 +3,26 @@ var app = express();
 var path = require('path');
 var bodyParser = require('body-parser');
 
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}))
 app.use(express.static('client'));
+
 app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist/'));
 
 
 app.post('/', function( req, res ) {
-  console.log('request', req.body);
+  console.log('request', req.body.input);
+  var data = JSON.parse(req.body.input);
 
-  //update data, then send it back
+  //process the data, then send it back to the client
+
+
+
+
+
+
+
+
+  var processedData = ""
 
   res.send(data)
 })
@@ -21,7 +31,7 @@ app.post('/', function( req, res ) {
 
 
 
-var data = [{
+var fakeData = [{
     "firstName": "Joshie",
     "lastName": "Wyattson",
     "county": "San Mateo",
