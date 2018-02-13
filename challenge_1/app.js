@@ -13,7 +13,17 @@ var board = [
   [0,0,0]
 ];
 
+var wins = {
+  "X": 0,
+  "O": 0
+}
+
 //========== Helper Functions ==========
+var updateScoreboard = function(winner, className){
+  var element = document.getElementsByClassName(className)[0];
+  var count = wins[winner]
+  element.innerHTML = "<strong>" + winner + ":</strong> " + count + " wins";
+}
 
 var checkForTie = function(board){
   if (JSON.stringify(board).indexOf('0') === -1){
@@ -23,16 +33,18 @@ var checkForTie = function(board){
 }
 
 var xWins = function(){
+  wins["X"] += 1;
   clearBoard();
+  updateScoreboard('X', 'xPlayer');
   alert('X has won the game!')
-
-  // call clear function here
 }
+
 var oWins = function(){
+  wins["O"] += 1;
   clearBoard();
-  alert('O has won the game!')
+  updateScoreboard('O', 'oPlayer');
+  alert('O has won the game!');
   xTurn = false;
-  //call clear funtion here
 }
 
 var clearBoard = function(){
