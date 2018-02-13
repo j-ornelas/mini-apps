@@ -1,6 +1,7 @@
 
 // ========== Browser Memory ==========
 var xTurn = true;
+
 // first turn will be x
 // if xturn is false, throw 'o' instead of 'x'
 // if x turn is true, place x on square.
@@ -19,6 +20,16 @@ var wins = {
 }
 
 //========== Helper Functions ==========
+
+var updateTurn = function() {
+  element = document.getElementsByClassName("turn")[0]
+  if (xTurn){
+    element.innerHTML = "X"
+  } else {
+    element.innerHTML = "O"
+  }
+}
+
 var updateScoreboard = function(winner, className){
   var element = document.getElementsByClassName(className)[0];
   var count = wins[winner]
@@ -105,6 +116,11 @@ var checkForWinner = function(board){
   }
 }
 
+// ========== Refresh Button ===========
+document.getElementsByClassName('refresh')[0].addEventListener('click', function(){
+  clearBoard();
+})
+
 //========== Event Listeners ==========
 
 // this is really long and gross and can probably be fixed
@@ -125,6 +141,7 @@ document.getElementsByClassName('one')[0].addEventListener('click', function () 
   }
   checkForTie(board);
   checkForWinner(board);
+  updateTurn();
 });
 
 document.getElementsByClassName('two')[0].addEventListener('click', function () {
@@ -144,6 +161,7 @@ document.getElementsByClassName('two')[0].addEventListener('click', function () 
   }
   checkForTie(board);
   checkForWinner(board);
+  updateTurn();
 });
 
 document.getElementsByClassName('three')[0].addEventListener('click', function () {
@@ -163,6 +181,7 @@ document.getElementsByClassName('three')[0].addEventListener('click', function (
   }
   checkForTie(board);
   checkForWinner(board);
+  updateTurn();
 });
 
 document.getElementsByClassName('four')[0].addEventListener('click', function () {
@@ -182,6 +201,7 @@ document.getElementsByClassName('four')[0].addEventListener('click', function ()
   }
   checkForTie(board);
   checkForWinner(board);
+  updateTurn();
 });
 
 document.getElementsByClassName('five')[0].addEventListener('click', function () {
@@ -201,6 +221,7 @@ document.getElementsByClassName('five')[0].addEventListener('click', function ()
   }
   checkForTie(board);
   checkForWinner(board);
+  updateTurn();
 });
 
 document.getElementsByClassName('six')[0].addEventListener('click', function () {
@@ -220,6 +241,7 @@ document.getElementsByClassName('six')[0].addEventListener('click', function () 
   }
   checkForTie(board);
   checkForWinner(board);
+  updateTurn();
 });
 
 
@@ -240,6 +262,7 @@ document.getElementsByClassName('seven')[0].addEventListener('click', function (
   }
   checkForTie(board);
   checkForWinner(board);
+  updateTurn();
 });
 
 
@@ -260,6 +283,7 @@ document.getElementsByClassName('eight')[0].addEventListener('click', function (
   }
   checkForTie(board);
   checkForWinner(board);
+  updateTurn();
 });
 
 
@@ -280,9 +304,5 @@ document.getElementsByClassName('nine')[0].addEventListener('click', function ()
   }
   checkForTie(board);
   checkForWinner(board);
+  updateTurn();
 });
-
-// ========== Refresh Button ===========
-document.getElementsByClassName('refresh')[0].addEventListener('click', function(){
-  clearBoard();
-})

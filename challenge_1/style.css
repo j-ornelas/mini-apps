@@ -1,6 +1,10 @@
 body {
   background-color: khaki;
 }
+.currentTurn {
+  text-align: center;
+  font-size: 32px;
+}
 td {
   border: 3px solid black;
   height: 160px;
