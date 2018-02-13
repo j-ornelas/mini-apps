@@ -5,11 +5,12 @@ var handleSubmit = function(input){
 
   $.ajax({
     url: 'http://127.0.0.1:8080/',
-    type: 'POST',
+    method: 'POST',
+    // Content-Type: 'application/json',
     data: input,
-    contentType: 'json',
+    // contentType: false,
     success: function(data) {
-      console.log(data);
+      console.log('data', data);
     },
     error: function (data) {
       console.error('failed');
@@ -24,8 +25,9 @@ var handleSubmit = function(input){
 $( document ).ready(function() {
 
   $('form').on('submit', function(event){
-    var data = JSON.stringify($('.field').val());
-    handleSubmit(data);
+    var input = JSON.stringify($('.field').val());
+    console.log(input)
+    handleSubmit(input);
     event.preventDefault();
   })
 

@@ -3,6 +3,7 @@ var app = express();
 var path = require('path');
 var bodyParser = require('body-parser');
 
+app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
 app.use(express.static('client'));
 app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist/'));
@@ -10,8 +11,10 @@ app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist/'));
 
 app.post('/', function( req, res ) {
   console.log('request', req.body);
-  res.send(data)
 
+  //update data, then send it back
+
+  res.send(data)
 })
 
 
