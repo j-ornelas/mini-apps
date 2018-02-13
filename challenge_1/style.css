@@ -1,5 +1,15 @@
+body {
+  background-color: khaki;
+}
 td {
-  border: 1px solid black;
-  height: 50px;
-  width: 50px;
+  border: 3px solid black;
+  height: 160px;
+  width: 160px;
+  font-size: 98px;
+  text-align: center;
+  background-color: white;
+}
+
+.info {
+  text-align: center;
 }
