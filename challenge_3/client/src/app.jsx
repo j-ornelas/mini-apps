@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM  from 'react-dom';
+import Board from './modules/board.jsx'
 
 class App extends React.Component {
   constructor(){
@@ -14,6 +15,7 @@ class App extends React.Component {
 
       <div>
         <h1>This is the App Component</h1>
+        <Board />
       </div>
 
     );
