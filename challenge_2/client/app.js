@@ -13,7 +13,7 @@ var handleSubmit = function(input){
     }
   });
 }
-
+//========Add data from server onto page=======
 var insertIntoPage = function(input){
   $('.output').prepend('<p>' + input + '</p>')
 }
