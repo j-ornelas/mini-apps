@@ -44,7 +44,7 @@ var handleData = function(data) {
   csv[2] = csv[2].slice(0, keys.length-1);
 
   // console.log(csv.join("\n"))
-  return csv.join("\n");
+  return csv.join("<br />");
 }
 
 // handleData(testData);
@@ -59,8 +59,9 @@ var handleSubmit = function(input){
     data: {input},
     success: function(data) {
       var csvObj = handleData(data)
-
-      alert(csvObj);
+      insertIntoPage(csvObj);
+      $('.field').val("")
+      // alert(csvObj);
 
 
 
@@ -71,6 +72,11 @@ var handleSubmit = function(input){
   });
 }
 
+var insertIntoPage = function(input){
+  $('.output').prepend('<p>' + input + '</p>')
+}
+
+
 //==========JQUERY CLICK EVENTS==========
 $( document ).ready(function() {
 
@@ -79,4 +85,9 @@ $( document ).ready(function() {
     handleSubmit(input);
     event.preventDefault();
   })
+
+
+
+
+
 });
