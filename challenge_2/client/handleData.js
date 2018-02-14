@@ -33,6 +33,8 @@ var handleData = function(data) {
   //remove 'children' from keys array
   csv[2] = csv[2].slice(0, keys.length-1);
   //finally, return csv!
+  console.log(keys)
+  console.log(users)
   return csv.join("<br />");
 }
 exports.handleData = handleData;
