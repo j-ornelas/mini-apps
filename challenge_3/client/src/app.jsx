@@ -1,12 +1,17 @@
 import React from 'react';
 import ReactDOM  from 'react-dom';
-import Board from './modules/board.jsx'
+import Board from './modules/board.jsx';
+import ScoreBoard from './modules/scoreBoard.jsx';
 
 class App extends React.Component {
   constructor(){
     super();
     this.state = {
+      playerOne: "Red",
+      playerTwo: "Black",
       redTurn: true,
+      redWins: 0,
+      blackWins: 0,
       // 0 is empty, 1 is red, 2 is black
       board: [[0,0,0,0,0,0,0],
               [0,0,0,0,0,0,0],
@@ -14,6 +19,42 @@ class App extends React.Component {
               [0,0,0,0,0,0,0],
               [0,0,0,0,0,0,0],
               [0,0,0,0,0,0,0]]
+    }
+  }
+
+
+  setNames(){
+    var player1 = prompt('player one name?');
+    this.setState({playerOne:player1});
+    var player2 = prompt('player two name?');
+    this.setState({playerTwo:player2});
+  }
+
+  clearBoard(){
+    this.setState({board:[[0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0]]})
+  }
+
+  hasRowWinner(board){
+    for (var i = 0; i < board.length; i++) {
+      var rowString = "";
+      for (var j = 0; j < board[i].length; j++){
+        rowString += board[i][j]
+      }
+      if (rowString.includes('1111')){
+        this.setState({redWins: this.state.redWins + 1})
+        alert('Player One Wins!')
+        this.clearBoard()
+      } else if (rowString.includes('2222')){
+        this.setState({blackWins: this.state.blackWins + 1})
+        alert('Player Two Wins!')
+        this.clearBoard()
+      }
+      rowString = "";
     }
   }
 
@@ -31,6 +72,7 @@ class App extends React.Component {
     } else{
       this.setState({redTurn: true})
     }
+    this.hasRowWinner(this.state.board)
   }
 
   insertIntoColumn(index) {
@@ -86,7 +128,7 @@ class App extends React.Component {
     return (
 
       <div>
-        <h1>This is the App Component</h1>
+        <ScoreBoard playerOne={this.state.playerOne} playerTwo={this.state.playerTwo} setNames={this.setNames.bind(this)} redWins={this.state.redWins} blackWins={this.state.blackWins}/>
         <Board handleClick={this.handleClick.bind(this)}/>
       </div>
 
