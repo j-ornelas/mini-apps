@@ -6,13 +6,13 @@ export default function Board (props) {
     return (
     <div>
       <div>
-        <button className="col1" onClick={props.handleClick.bind(this, 0)}>click</button>
-        <button className="col2" onClick={props.handleClick.bind(this, 1)}>click</button>
-        <button className="col3" onClick={props.handleClick.bind(this, 2)}>click</button>
-        <button className="col4" onClick={props.handleClick.bind(this, 3)}>click</button>
-        <button className="col5" onClick={props.handleClick.bind(this, 4)}>click</button>
-        <button className="col6" onClick={props.handleClick.bind(this, 5)}>click</button>
-        <button className="col7" onClick={props.handleClick.bind(this, 6)}>click</button>
+        <button className="col1" onClick={props.handleClick.bind(this, 0)}>drop<br /> v</button>
+        <button className="col2" onClick={props.handleClick.bind(this, 1)}>drop<br /> v</button>
+        <button className="col3" onClick={props.handleClick.bind(this, 2)}>drop<br /> v</button>
+        <button className="col4" onClick={props.handleClick.bind(this, 3)}>drop<br /> v</button>
+        <button className="col5" onClick={props.handleClick.bind(this, 4)}>drop<br /> v</button>
+        <button className="col6" onClick={props.handleClick.bind(this, 5)}>drop<br /> v</button>
+        <button className="col7" onClick={props.handleClick.bind(this, 6)}>drop<br /> v</button>
 
       </div>
       <table>

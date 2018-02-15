@@ -2,7 +2,7 @@ body {
   background-color: khaki;
 }
 .black_circle {
-    background-color: black;
+    background-image: url('https://i.imgur.com/s8tcbw1.png');
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -10,7 +10,7 @@ body {
 
 .red_circle {
 
-    background-color: red;
+    background-image: url('https://i.imgur.com/FcuFTx8.jpg');
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -25,4 +25,8 @@ td {
 
 button {
   width: 56px
+}
+
+.clear {
+  width: 395px
 }
