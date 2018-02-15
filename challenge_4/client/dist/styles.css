@@ -1,0 +1,23 @@
+body {
+  background-color: khaki;
+}
+
+
+
+td {
+  height: 50px;
+  background-color: white;
+  width: 70px;
+}
+
+.total {
+  background-color: white;
+  font-size: 32px;
+  height: 40px;
+  width: 50px;
+}
+
+.select {
+  width: 40px;
+  height: 40px;
+}
