@@ -18,22 +18,22 @@ export default function Board (props) {
       <table>
        <tbody>
         <tr className="row_one">
-          <td className="0-0"></td><td className="0-1"></td><td className="0-2"></td><td className="0-3"></td><td className="0-4"></td><td className="0-5"></td><td className="0-6"></td>
+          <td className="0-0 square"></td><td className="0-1 square"></td><td className="0-2 square"></td><td className="0-3 square"></td><td className="0-4 square"></td><td className="0-5 square"></td><td className="0-6 square"></td>
         </tr>
         <tr className="row_two">
-          <td className="1-0"></td><td className="1-1"></td><td className="1-2"></td><td className="1-3"></td><td className="1-4"></td><td className="1-5"></td><td className="1-6"></td>
+          <td className="1-0 square"></td><td className="1-1 square"></td><td className="1-2 square"></td><td className="1-3 square"></td><td className="1-4 square"></td><td className="1-5 square"></td><td className="1-6 square"></td>
         </tr>
         <tr className="row_three">
-          <td className="2-0"></td><td className="2-1"></td><td className="2-2"></td><td className="2-3"></td><td className="2-4"></td><td className="2-5"></td><td className="2-6"></td>
+          <td className="2-0 square"></td><td className="2-1 square"></td><td className="2-2 square"></td><td className="2-3 square"></td><td className="2-4 square"></td><td className="2-5 square"></td><td className="2-6 square"></td>
         </tr>
         <tr className="row_four">
-          <td className="3-0"></td><td className="3-1"></td><td className="3-2"></td><td className="3-3"></td><td className="3-4"></td><td className="3-5"></td><td className="3-6"></td>
+          <td className="3-0 square"></td><td className="3-1 square"></td><td className="3-2 square"></td><td className="3-3 square"></td><td className="3-4 square"></td><td className="3-5 square"></td><td className="3-6 square"></td>
         </tr>
         <tr className="row_five">
-          <td className="4-0"></td><td className="4-1"></td><td className="4-2"></td><td className="4-3"></td><td className="4-4"></td><td className="4-5"></td><td className="4-6"></td>
+          <td className="4-0 square"></td><td className="4-1 square"></td><td className="4-2 square"></td><td className="4-3 square"></td><td className="4-4 square"></td><td className="4-5 square"></td><td className="4-6 square"></td>
         </tr>
         <tr className="row_six">
-          <td className="5-0"></td><td className="5-1"></td><td className="5-2"></td><td className="5-3"></td><td className="5-4"></td><td className="5-5"></td><td className="5-6"></td>
+          <td className="5-0 square"></td><td className="5-1 square"></td><td className="5-2 square"></td><td className="5-3 square"></td><td className="5-4 square"></td><td className="5-5 square"></td><td className="5-6 square"></td>
         </tr>
        </tbody>
       </table>

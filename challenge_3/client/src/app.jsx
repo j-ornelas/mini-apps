@@ -37,6 +37,9 @@ class App extends React.Component {
             [0,0,0,0,0,0,0],
             [0,0,0,0,0,0,0],
             [0,0,0,0,0,0,0]]})
+
+    $('.square').removeClass('red_circle');
+    $('.square').removeClass('black_circle');
   }
 
   hasRowWinner(board){
@@ -130,6 +133,7 @@ class App extends React.Component {
       <div>
         <ScoreBoard playerOne={this.state.playerOne} playerTwo={this.state.playerTwo} setNames={this.setNames.bind(this)} redWins={this.state.redWins} blackWins={this.state.blackWins}/>
         <Board handleClick={this.handleClick.bind(this)}/>
+        <button onClick={this.clearBoard.bind(this)}>Clear Board</button>
       </div>
 
     );
