@@ -14,6 +14,7 @@ class App extends React.Component {
     super()
 
     this.state = {
+      name: "Johnny",
       prevRounds: [],
       currentRound: 0,
       round1: true,
@@ -26,7 +27,7 @@ class App extends React.Component {
 
   addToDB(data){
     var toSend = JSON.stringify({
-      name: "Johnny",
+      name: this.state.name,
       score: this.state.rounds,
       total: this.state.total
     });
@@ -120,9 +121,16 @@ class App extends React.Component {
     this.calculateTotal();
   }
 
+  changeName(){
+    var name = prompt('what is your name?')
+
+    this.setState({name:name})
+  }
+
   render() {
     return (
       <div>
+        <button onClick={this.changeName.bind(this)}>Change Name</button>
         <button onClick={this.addToDB.bind(this)}>AJAX POST</button>
         <button onClick={this.getFromDB.bind(this, this.changeState)}>AJAX GET</button>
         <ButtonSelect currentRound={this.state.currentRound} rounds={this.state.rounds} selectButton={this.selectButton.bind(this)} />
