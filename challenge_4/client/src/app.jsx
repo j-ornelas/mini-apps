@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import ScoreBoard from './modules/ScoreBoard.jsx';
 import Frame from './modules/Frame.jsx';
 import ButtonSelect from './modules/ButtonSelect.jsx'
+import PrevRounds from './modules/PrevRounds.jsx'
 
 
 var $ = require('jQuery')
@@ -13,18 +14,23 @@ class App extends React.Component {
     super()
 
     this.state = {
+      prevRounds: [],
       currentRound: 0,
       round1: true,
       rounds: [[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],
       total: 0
     }
+    this.changeState = this.changeState.bind(this);
+
   }
 
   addToDB(data){
     var toSend = JSON.stringify({
-      name: "Test Name",
-      score: this.state.rounds
+      name: "Johnny",
+      score: this.state.rounds,
+      total: this.state.total
     });
+
     $.ajax({
     	  // This is the url you should use to communicate with the parse API server.
     	  url: 'http://127.0.0.1:3000',
@@ -42,15 +48,20 @@ class App extends React.Component {
     })
   }
 
-  getFromDB(){
+  changeState(array){
+    this.setState({prevRounds:array})
+  }
+
+  getFromDB(callback){
     $.ajax({
         // This is the url you should use to communicate with the parse API server.
         url: 'http://127.0.0.1:3000/scores',
         type: 'GET',
         contentType: 'application/json',
         success: function (data) {
-          // console.log(data)
-          console.log(data);
+          console.log(data)
+          callback(data)
+
         },
         error: function (data) {
           // See: https://developer.mozilla.org/en-US/docs/Web/API/console.error
@@ -113,11 +124,12 @@ class App extends React.Component {
     return (
       <div>
         <button onClick={this.addToDB.bind(this)}>AJAX POST</button>
-        <button onClick={this.getFromDB.bind(this)}>AJAX GET</button>
+        <button onClick={this.getFromDB.bind(this, this.changeState)}>AJAX GET</button>
         <ButtonSelect currentRound={this.state.currentRound} rounds={this.state.rounds} selectButton={this.selectButton.bind(this)} />
         <ScoreBoard rounds={this.state.rounds} calculateTotal={this.calculateTotal.bind(this)} />
         <p>Total Score:</p>
         <div className="total">{this.state.total}</div>
+        {this.state.prevRounds.map((round, index) => <PrevRounds key={index} data={this.state.prevRounds[index]} />)}
 
       </div>
     )

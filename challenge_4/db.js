@@ -9,7 +9,8 @@ db.once('open', function(){
 
 var schema = new mongoose.Schema({
   name: String,
-  score: Array
+  score: Array,
+  total: Number
 })
 
 var Score = db.model('Score', schema)
