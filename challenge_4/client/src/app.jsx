@@ -4,6 +4,8 @@ import ScoreBoard from './modules/ScoreBoard.jsx';
 import Frame from './modules/Frame.jsx';
 import ButtonSelect from './modules/ButtonSelect.jsx'
 
+
+var $ = require('jQuery')
 var _ = require('lodash');
 
 class App extends React.Component {
@@ -16,6 +18,45 @@ class App extends React.Component {
       rounds: [[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],
       total: 0
     }
+  }
+
+  addToDB(data){
+    var toSend = JSON.stringify({
+      name: "Test Name",
+      score: this.state.rounds
+    });
+    $.ajax({
+    	  // This is the url you should use to communicate with the parse API server.
+    	  url: 'http://127.0.0.1:3000',
+    	  type: 'POST',
+    	  data: toSend,
+    	  contentType: 'application/json',
+    	  success: function (data) {
+    	  	// console.log(data)
+    	    console.log(data);
+    	  },
+    	  error: function (data) {
+    	    // See: https://developer.mozilla.org/en-US/docs/Web/API/console.error
+    	    console.log('failed to load data. something went wrong.');
+    	  }
+    })
+  }
+
+  getFromDB(){
+    $.ajax({
+        // This is the url you should use to communicate with the parse API server.
+        url: 'http://127.0.0.1:3000/scores',
+        type: 'GET',
+        contentType: 'application/json',
+        success: function (data) {
+          // console.log(data)
+          console.log(data);
+        },
+        error: function (data) {
+          // See: https://developer.mozilla.org/en-US/docs/Web/API/console.error
+          console.log('failed to load data. something went wrong.');
+        }
+    })
   }
 
   switchRound(){
@@ -71,7 +112,8 @@ class App extends React.Component {
   render() {
     return (
       <div>
-
+        <button onClick={this.addToDB.bind(this)}>AJAX POST</button>
+        <button onClick={this.getFromDB.bind(this)}>AJAX GET</button>
         <ButtonSelect currentRound={this.state.currentRound} rounds={this.state.rounds} selectButton={this.selectButton.bind(this)} />
         <ScoreBoard rounds={this.state.rounds} calculateTotal={this.calculateTotal.bind(this)} />
         <p>Total Score:</p>
